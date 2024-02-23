@@ -1,0 +1,78 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Node{
+    public:
+    int val;
+    Node* left;
+    Node* right;
+
+    Node(int data){
+        this->val=data;
+        left=NULL;
+        right=NULL;
+
+    }
+
+};
+
+void rightveiw(Node* root){
+    if(root==NULL){
+        return;
+
+    }
+
+    queue<Node*>q;
+    q.push(root);
+    while(!q.empty()){
+        
+        int size=q.size();
+        for(int i=0;i<size;i++){
+            Node* node=q.front();
+            q.pop();
+            if(node!=NULL){
+                if(i==size-1){
+                    cout<<node->val<<" ";
+                }
+
+                if(node->left!=NULL){
+                    q.push(node->left);
+                }
+
+                if(node->right!=NULL){
+                    q.push(node->right);
+                }
+            }
+            
+
+        }
+    }
+
+
+}
+
+int main(){
+
+    Node* root=new Node(5);
+    root->left=new Node(6);
+    root->left->right=new Node(1);
+    root->left->left=new Node(9);
+    root->left->right->left=new Node(2);
+    root->left->right->left->left=new Node(3);
+    root->left->right->left->right=new Node(5);
+    root->right=new Node(3);
+    root->right->right=new Node(1);
+    root->right->left=new Node(2);
+    root->right->left->right=new Node(6);
+    root->right->left->right->right=new Node(7);
+    rightveiw(root);  
+    
+    cout<<endl;
+   
+
+
+
+  // findSumOfLevel(root,3);
+
+
+
+}
